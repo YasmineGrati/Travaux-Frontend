@@ -1,0 +1,122 @@
+<h1 mat-dialog-title>Ajouter un utilisateur</h1>
+<div mat-dialog-content>
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()" novalidate>
+        <mat-form-field appearance="outline">
+            <mat-label>Nom</mat-label>
+            <input formControlName="nom" matInput placeholder="nom" />
+            <!-- error -->
+            <mat-error *ngIf="errorHandling('nom', 'required')">
+               <strong>Nom</strong> est obligatoire
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Prenom</mat-label>
+            <input formControlName="prenom" matInput placeholder="prenom">
+            <mat-error *ngIf="errorHandling('prenom', 'required')">
+                <strong>Prenom</strong> est obligatoire
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Telephone</mat-label>
+            <span matPrefix>+216 &nbsp;</span>
+            <input formControlName="numTel" type="tel" matInput placeholder="95-326-418">
+            <mat-icon matSuffix>mode_edit</mat-icon>
+            <mat-error *ngIf="errorHandling('numTel', 'required')">
+                <strong>Numero de telephone</strong> est obligatoire
+            </mat-error>
+        </mat-form-field>
+
+        <label for=""><h3>Role de l'utilisateur</h3></label>
+        <mat-radio-group formControlName="roles" class="example-radio-group" [(ngModel)]="roleType">
+            <mat-radio-button class="example-radio-button" *ngFor="let roles of roleList" [value]="roles">
+                {{roles}}
+            </mat-radio-button>
+        </mat-radio-group>
+        <mat-hint>Vous avez choisit: {{roleType}}</mat-hint>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Status</mat-label>
+            <mat-select formControlName="active" required>
+              <mat-option>--Choisir le status--</mat-option>
+              <mat-option *ngFor="let active of activeList" [value]="active">
+                {{active.name}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="errorHandling('active', 'required')">
+                Ce champs est obligatoire
+            </mat-error>
+          </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Username</mat-label>
+            <input formControlName="username" matInput placeholder="username">
+            <mat-error *ngIf="errorHandling('username', 'required')">
+                <strong>Username</strong> est obligatoire
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input formControlName="email" matInput placeholder="email">
+            <mat-error *ngIf="errorHandling('email', 'required')">
+                <strong>Email</strong> est obligatoire
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Password</mat-label>
+            <input formControlName="password" matInput [type]="hide ? 'password' : 'text'" required>
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <mat-error *ngIf="errorHandling('password', 'required')">
+            Veuillez saisir votre <strong>mot de passe</strong> s'il vous plait
+         </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Ville de profession</mat-label>
+            <select formControlName="villeProfession" matNativeControl required >
+              <option label="--Choisir votre ville--"></option>
+              <option value="Ariana">Ariana</option>
+              <option value="Béja">Béja</option>
+              <option value="Ben Arous">Ben Arous</option>
+              <option value="Bizerte">Bizerte</option>
+              <option value="Gabes">Gabes</option>
+              <option value="Gafsa">Gafsa</option>
+              <option value="Jendouba">Jendouba</option>
+              <option value="Kairouan">Kairouan</option>
+              <option value="Kasserine">Kasserine</option>
+              <option value="Kebili">Kebili</option>
+              <option value="La Manouba">La Manouba</option>
+              <option value="Le Kef">Le Kef</option>
+              <option value="Mahdia">Mahdia</option>
+              <option value="Médenine">Médenine</option>
+              <option value="Monastir">Monastir</option>
+              <option value="Nabeul">Nabeul</option>
+              <option value="Sfax">Sfax</option>
+              <option value="Sidi Bouzid">Sidi Bouzid</option>
+              <option value="Siliana">Siliana</option>
+              <option value="Sousse">Sousse</option>
+              <option value="Tataouine">Tataouine</option>
+              <option value="Tozeur">Tozeur</option>
+              <option value="Tunis">Tunis</option>
+              <option value="Zaghouan">Zaghouan</option>
+            </select>
+            <mat-error *ngIf="errorHandling('villeProfession', 'required')">
+              Ce champs est obligatoire
+            </mat-error>
+          </mat-form-field>
+
+    </form>
+</div>
+<div mat-dialog-action [align]="'end'">
+    <!-- mat-dialog-close-->
+    <button mat-raised-button color="warn" (click)="onReset()">
+        Réinitialiser
+    </button>
+    <!-- Binding -->
+    <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="createUser()">Enregistrer</button>
+</div>

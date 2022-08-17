@@ -1,0 +1,59 @@
+
+  <!--Table-->
+  <h3><i class="fa fa-angle-right"></i> Liste des travaux</h3>
+  <button _ngcontent-roy-c3="" class="btnnote" type="submit" routerLink="/dashboard/ajoutTravaux">Ajouter un travaux</button>
+
+  <div>
+    
+        <div >
+          <input type="text" class="form-control" placeholder="Search" /> 
+        </div>
+      
+  <table class="table table-striped">
+
+    <thead class="thead-inverse">
+    <tr>
+      <th>id</th>
+      <th>etatAffectation</th>
+      <th>numClient</th>
+      <th>msisdn</th>
+      <th>dateSaisie</th>
+      <th>datePlanification</th>
+      <th>adresse</th>
+      <th>Technicien</th>
+      <!--<th>Action</th>-->
+    </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let t of travaux | paginate: {itemsPerPage: 4, currentPage: p}" >  
+            <td>{{t.id}}</td>
+            <td>{{t.etatAffectation}}</td>
+            <td>{{t.numClient}}</td>
+            <td>{{t.msisdn}}</td>
+            <td>{{t.dateSaisie}}</td>
+            <td>{{t.datePlanification}}</td>
+            <td>{{t.adresse.adresse}}</td>
+            <td *ngFor="let tec of t.techniciens">
+              <p>{{tec.nom+' '+tec.prenom}}</p>
+            </td>
+          <!--
+             <td>
+              <div class="container">
+                <button mat-raised-button class="action-button btn-success"  >  
+                  <mat-icon> remove_red_eye</mat-icon>
+                </button>
+
+                <button mat-raised-button class="action-button btn-primary"  ><mat-icon>edit</mat-icon></button> 
+
+              </div>
+            </td>
+          -->
+        </tr>
+    </tbody>
+  </table>
+
+  <div class="pagination">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+
+</div>

@@ -1,0 +1,58 @@
+
+  <!--Table-->
+  <h3><i class="fa fa-angle-right"></i> Liste des utilisateurs</h3>
+  <button _ngcontent-roy-c3="" class="btnnote" type="submit" (click)="openDialog()">Ajouter un utilisateur</button>
+
+  <div>
+    
+        <div >
+          <input type="text" class="form-control" placeholder="Search" /> 
+        </div>
+      
+  <table class="table table-striped">
+
+    <thead class="thead-inverse">
+    <tr>
+      <th>id</th>
+      <th>nom</th>
+      <th>prenom</th>
+      <th>numTel</th>
+      <th>username</th>
+      <th>email</th>
+      <th>villeProfession</th>
+      <th>role</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let tech of techniciens | paginate: {itemsPerPage: 4, currentPage: p}" >  
+            <td>{{tech.id}}</td>
+            <td>{{tech.nom}}</td>
+            <td>{{tech.prenom}}</td>
+            <td>{{tech.numTel}}</td>
+            <td>{{tech.username}}</td>
+            <td>{{tech.email}}</td>
+            <td>{{tech.villeProfession}}</td>
+            <td>{{tech.roles[0].name}}</td>
+            <td>{{tech.active}}</td>
+  
+            <td>
+              <div class="container">
+                <button mat-raised-button class="action-button btn-success" [routerLink]="['/dashboard/detailUser', tech.id]">  
+                  <mat-icon> remove_red_eye</mat-icon>
+                </button>
+
+                <button mat-raised-button class="action-button btn-primary" (click)="updateUser(tech)"><mat-icon>edit</mat-icon></button> 
+
+              </div>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+  <div class="pagination">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+
+</div>

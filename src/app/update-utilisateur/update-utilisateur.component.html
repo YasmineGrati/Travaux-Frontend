@@ -1,0 +1,93 @@
+<div class="container" >
+   
+    <div class="row">
+
+        <div class="col-lg-1"></div>
+  
+        <div class="col-lg-10">
+            <div id="ui">
+                <form (ngSubmit)="editForm()">
+                <h3><i class="fa fa-angle-right"></i>informations personelles</h3>
+                <br>
+  
+                <div class="row">
+                    <div class="col-lg-6">
+                        <label for="fname">Nom</label>
+                        <input type="text" name="nom" class="form-control" [(ngModel)]="technicien.nom">
+                    </div>
+  
+                    <div class="col-lg-6">
+                        <label for="fname">Prenom</label>
+                        <input type="text" name="prenom" class="form-control" [(ngModel)]="technicien.prenom">
+                    </div>
+                </div>
+  
+                <label for="fname" class="form-label">Email</label>
+                <input type="email" name="email" placeholder="name@example.com" class="form-control" [(ngModel)]="technicien.email">
+                
+                <div class="row">
+                    <div class="col-lg-6">
+                        <label for="fname">Ville de Profession</label>
+                        <select name="villeProfession" class="form-select" aria-label="Default select example" [(ngModel)]="technicien.villeProfession">
+                            <option selected disabled value="">--Choisir votre ville--</option>
+                            <option value="Ariana">Ariana</option>
+                            <option value="Béja">Béja</option>
+                            <option value="Ben Arous">Ben Arous</option>
+                            <option value="Bizerte">Bizerte</option>
+                            <option value="Gabes">Gabes</option>
+                            <option value="Gafsa">Gafsa</option>
+                            <option value="Jendouba">Jendouba</option>
+                            <option value="Kairouan">Kairouan</option>
+                            <option value="Kasserine">Kasserine</option>
+                            <option value="Kebili">Kebili</option>
+                            <option value="La Manouba">La Manouba</option>
+                            <option value="Le Kef">Le Kef</option>
+                            <option value="Mahdia">Mahdia</option>
+                            <option value="Médenine">Médenine</option>
+                            <option value="Monastir">Monastir</option>
+                            <option value="Nabeul">Nabeul</option>
+                            <option value="Sfax">Sfax</option>
+                            <option value="Sidi Bouzid">Sidi Bouzid</option>
+                            <option value="Siliana">Siliana</option>
+                            <option value="Sousse">Sousse</option>
+                            <option value="Tataouine">Tataouine</option>
+                            <option value="Tozeur">Tozeur</option>
+                            <option value="Tunis">Tunis</option>
+                            <option value="Zaghouan">Zaghouan</option>
+                        </select>
+                    </div>
+
+                </div>
+  
+                <div class="row">
+                    <div class="col-lg-6">
+                        <label for="fname">Numero Tel</label>
+                        <input type="tel" name="numTel" class="form-control" placeholder="95 326 418" [(ngModel)]="technicien.numTel">
+                    </div>
+  
+                    <div class="col-lg-6">
+                        <label for="fname">Username</label>
+                        <input type="text" name="username" class="form-control" [(ngModel)]="technicien.username">
+                    </div>
+                </div>
+
+                <label for="fname">Role</label>
+                <div class="form-check">
+                    <!--<input [(ngModel)]="technicien.roles"  [value]="technicien.roles[0].name" class="form-check-input" type="radio" name="roles" id="flexRadioDefault1" [checked]="technicien.roles[0].name=='ROLE_ADMIN'">-->
+                    <input [(ngModel)]="typeTech" class="form-check-input" type="radio" name="roles" value="ROLE_ADMIN"  >
+                    <label class="form-check-label" for="flexRadioDefault1">ADMIN</label>
+                </div>
+                <div class="form-check">
+                    <input [(ngModel)]="typeTech" class="form-check-input" type="radio" name="roles" value="ROLE_TECHNICIEN" >
+                    <label class="form-check-label" for="flexRadioDefault2">TECHNICIEN</label>
+                </div>
+
+                <br>
+                <br>
+                <input type="submit" value="Update" class="btn btn-primary mb-3">  
+            </form>
+            </div>
+    </div>
+    <div class="col-lg-1"></div>
+    </div>     
+</div>
