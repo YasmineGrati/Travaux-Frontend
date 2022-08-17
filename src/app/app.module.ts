@@ -23,7 +23,6 @@ import { BoardAdminComponent } from './board-admin/board-admin.component';
 import { BoardTechnicienComponent } from './board-technicien/board-technicien.component';
 import { ProfileComponent } from './profile/profile.component';
 import { HomeeComponent } from './homee/homee.component';
-import { NavbarComponent } from './navbar/navbar.component';
 import { TemplateComponent } from './template/template/template.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
@@ -56,7 +55,6 @@ import { ListTravauxComponent } from './list-travaux/list-travaux.component';
     BoardTechnicienComponent,
     ProfileComponent,
     HomeeComponent,
-    NavbarComponent,
     TemplateComponent,
     FooterComponent,
     ListUtilisateursComponent,

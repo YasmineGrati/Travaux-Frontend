@@ -21,7 +21,6 @@ export class AjoutTravauxComponent implements OnInit {
   ngOnInit(): void {
     this.travaux.adresse = new Adresse();
     this.getAllTechniciens();
-    //this.getListTravaux();
   }
 
   getAllTechniciens(){
@@ -29,10 +28,6 @@ export class AjoutTravauxComponent implements OnInit {
     .subscribe(  data => {
       this.techniciens = data;
       console.log("All your techs: ",data)
-//      console.log(this.techniciens);
-
-      // alert("Travaux created successfully");
-      // this.router.navigate(['/dashboard/listTravaux']);
     } );
   };
 
@@ -47,9 +42,6 @@ export class AjoutTravauxComponent implements OnInit {
 
   createTravaux():void {
     console.log("clicked");
-    // let address=new Adresse;
-    // address.adresse=this.adr;
-    // this.travaux.adresse=address;
     this.travauxService.addTravaux(this.travaux)
       .subscribe(  data => {
         alert("Travaux created successfully");
